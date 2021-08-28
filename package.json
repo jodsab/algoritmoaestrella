@@ -1,0 +1,20 @@
+{
+  "name": "ada",
+  "homepage": "https://jodsab.github.io/algoritmoaestrella/",
+  "version": "1.0.0",
+  "description": "Algoritmo A* (estrella) creado en Canvas (HTML5) con JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jodsab/algoritmoaestrella.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jodsab/algoritmoaestrella/issues"
+  }
+}
