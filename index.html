@@ -1,13 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <head>
-    <title>A Estrella</title>
-    <script src='js/pathfinding.js'></script>
-  </head>
+  <link rel="stylesheet" href="style.css">
 
-  <body onload='inicializa();'>
-    <h1>Algoritmo estrella</h1>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+
+  <title>A Estrella</title>
+</head>
+
+<body onload='inicializa();'>
+
+  <h1 id='titulo'>Algoritmo estrella</h1>
+  
+<div class="container">
+  
     <canvas id='canvas' width='500' height='500' style='border:2px solid #000000;'></canvas>
-  </body>
+    
 
+</div>
+  
+<div>
+  <h4>Camino: </h4>
+  <p id='pasototal'></p>
+  <ul id='listacamino'>
+
+  </ul>
+</div>
+
+
+  <script src='js/pathfinding.js'></script>
+</body>
 </html>

@@ -1,0 +1,18 @@
+body{
+
+    font-family: 'Kanit', sans-serif;
+}
+
+#titulo{
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+#listacamino{
+    display: flex;
+    flex-direction: column-reverse;
+}

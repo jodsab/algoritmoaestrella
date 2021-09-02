@@ -1,22 +1,10 @@
-/*
-Creado por Javier Muñiz @javianmuniz para
-el canal de YouTube "Programar es increíble"
-
-Suscríbete para más vídeos y tutoriales:
-https://www.youtube.com/channel/UCS9KSwTM3FO2Ovv83W98GTg
-
-Enlace al tutorial paso a paso:
-https://youtu.be/NWS-_VsMab4
-*/
-
-
 var canvas;
 var ctx;
 var FPS = 50;
 
 //ESCENARIO / TABLERO
-var columnas = 25;
-var filas = 25;
+var columnas = 50;
+var filas = 50;
 var escenario;  //matriz del nivel
 
 //TILES
@@ -37,7 +25,9 @@ var closedSet = [];
 var camino = [];
 var terminado = false;
 
-
+//ESCRIBIMOS EN LA LISTA
+let lista = document.getElementById('listacamino');
+let pasototal = document.getElementById('pasototal');
 
 
 //CREAMOS UN ARRAY 2D
@@ -71,9 +61,9 @@ function borraDelArray(array,elemento){
 
 
 
-
-
 function Casilla(x,y){
+
+  
 
   //POSICIÓN
   this.x = x;
@@ -148,8 +138,6 @@ function Casilla(x,y){
     ctx.fillStyle = '#00FFFF';  //cyan
     ctx.fillRect(this.x*anchoT,this.y*altoT,anchoT,altoT);
   }
-
-
 }
 
 
@@ -179,16 +167,31 @@ function inicializa(){
     }
   }
 
+
   //CREAMOS ORIGEN Y DESTINO DE LA RUTA
-  principio = escenario[0][0];
-  fin = escenario[columnas-1][filas-1];
+
+  function origenyfinal(){  
+    const numy = prompt("Ingrese punto inicio X (1-25): ")
+    const numx = prompt("Ingrese punto inicio Y (1-25): ")
+    principio = escenario[numx-1][numy-1];
+    const num2y = prompt("Ingrese punto final X (1-25): ")
+    const num2x = prompt("Ingrese punto final Y (1-25): ")
+    fin = escenario[num2x-1][num2y-1];
+  }
+
+  origenyfinal();
+
+
 
   //INICIALIZAMOS OPENSET
   openSet.push(principio);
 
   //EMPEZAMOS A EJECUTAR EL BUCLE PRINCIPAL
   setInterval(function(){principal();},1000/FPS);
+
+  
 }
+
 
 
 
@@ -214,20 +217,12 @@ function dibujaEscenario(){
     camino[i].dibujaCamino();
   }
 
-
-
 }
-
 
 function borraCanvas(){
   canvas.width = canvas.width;
   canvas.height = canvas.height;
 }
-
-
-
-
-
 
 function algoritmo(){
 
@@ -255,10 +250,23 @@ function algoritmo(){
         camino.push(temporal);
 
         while(temporal.padre!=null){
+
+          const uli = document.createElement('li');
+          uli.innerText = `[${temporal.x+1},${temporal.y+1}], paso ${temporal.g}`
+
+          listacamino.appendChild(uli);
+
           temporal = temporal.padre;
           camino.push(temporal);
+
+
         }
 
+
+
+        const uli2 = document.createElement('li');
+        uli2.innerText = `[${temporal.x+1},${temporal.y+1}], paso ${temporal.g}`;
+        listacamino.appendChild(uli2);
 
         console.log('camino encontrado');
         terminado = true;
@@ -305,9 +313,6 @@ function algoritmo(){
       }
 
 
-
-
-
     }
 
     else{
@@ -315,15 +320,16 @@ function algoritmo(){
       terminado = true;   //el algoritmo ha terminado
     }
 
-
-
   }
 
 }
 
 
 
+
+
 function principal(){
+  
   borraCanvas();
   algoritmo();
   dibujaEscenario();
