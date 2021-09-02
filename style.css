@@ -7,6 +7,11 @@ body{
     text-align: center;
 }
 
+#canvas {
+    width: 500px;
+    height: 500px;
+}
+
 .container{
     display: flex;
     justify-content: center;
@@ -16,3 +21,17 @@ body{
     display: flex;
     flex-direction: column-reverse;
 }
+
+#camino{
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 500px) {
+    
+    #canvas {
+        width: 320px;
+        height: 320px;
+    }
+  }
+  

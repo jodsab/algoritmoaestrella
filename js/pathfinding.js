@@ -268,6 +268,7 @@ function algoritmo(){
         uli2.innerText = `[${temporal.x+1},${temporal.y+1}], paso ${temporal.g}`;
         listacamino.appendChild(uli2);
 
+        pasototal.innerText = 'Se encontró el camino';
         console.log('camino encontrado');
         terminado = true;
       }
@@ -316,6 +317,7 @@ function algoritmo(){
     }
 
     else{
+      pasototal.innerText = 'No se encontró el camino';
       console.log('No hay un camino posible');
       terminado = true;   //el algoritmo ha terminado
     }
