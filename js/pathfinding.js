@@ -28,6 +28,7 @@ var terminado = false;
 //ESCRIBIMOS EN LA LISTA
 let lista = document.getElementById('listacamino');
 let pasototal = document.getElementById('pasototal');
+let recorrido = document.getElementById('recorrido');
 
 
 //CREAMOS UN ARRAY 2D
@@ -138,6 +139,17 @@ function Casilla(x,y){
     ctx.fillStyle = '#00FFFF';  //cyan
     ctx.fillRect(this.x*anchoT,this.y*altoT,anchoT,altoT);
   }
+
+  this.dibujaIni = function(){
+    ctx.fillStyle = '#00aaff'; 
+    ctx.fillRect(this.x*anchoT,this.y*altoT,anchoT,altoT);
+  }
+
+  this.dibujaFini = function(){
+    ctx.fillStyle = '#ff00d4'; 
+    ctx.fillRect(this.x*anchoT,this.y*altoT,anchoT,altoT);
+  }
+  
 }
 
 
@@ -169,26 +181,28 @@ function inicializa(){
 
 
   //CREAMOS ORIGEN Y DESTINO DE LA RUTA
-
   function origenyfinal(){  
-    const numy = prompt("Ingrese punto inicio X (1-25): ")
-    const numx = prompt("Ingrese punto inicio Y (1-25): ")
+    const numy = prompt(`Ingrese punto de PARTIDA X (1-${columnas})`)
+    const numx = prompt(`Ingrese punto de PARTIDA Y (1-${filas})`)
     principio = escenario[numx-1][numy-1];
-    const num2y = prompt("Ingrese punto final X (1-25): ")
-    const num2x = prompt("Ingrese punto final Y (1-25): ")
+    
+    const num2y = prompt(`Ingrese punto de SALIDA X (1-${columnas})`)
+    const num2x = prompt(`Ingrese punto de SALIDA Y (1-${filas})`)
     fin = escenario[num2x-1][num2y-1];
+    
+    recorrido.innerText = `[${numy},${numx}]-->[${num2y},${num2x}]`;
   }
 
   origenyfinal();
-
-
-
+  
   //INICIALIZAMOS OPENSET
   openSet.push(principio);
+
 
   //EMPEZAMOS A EJECUTAR EL BUCLE PRINCIPAL
   setInterval(function(){principal();},1000/FPS);
 
+  
   
 }
 
@@ -196,6 +210,7 @@ function inicializa(){
 
 
 function dibujaEscenario(){
+
   for(i=0;i<filas;i++){
     for(j=0;j<columnas;j++){
         escenario[i][j].dibuja();
@@ -216,6 +231,9 @@ function dibujaEscenario(){
   for(i=0; i<camino.length; i++){
     camino[i].dibujaCamino();
   }
+
+  principio.dibujaIni();
+  fin.dibujaFini();
 
 }
 
@@ -331,8 +349,11 @@ function algoritmo(){
 
 
 function principal(){
+
+  
   
   borraCanvas();
   algoritmo();
   dibujaEscenario();
+  
 }
