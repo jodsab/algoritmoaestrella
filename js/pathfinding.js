@@ -1,6 +1,6 @@
 var canvas;
 var ctx;
-var FPS = 5;
+var FPS = 60;
 
 //ESCENARIO / TABLERO
 var columnas = 50;
@@ -277,10 +277,7 @@ function algoritmo(){
           temporal = temporal.padre;
           camino.push(temporal);
 
-
         }
-
-
 
         const uli2 = document.createElement('li');
         uli2.innerText = `[${temporal.x+1},${temporal.y+1}], paso ${temporal.g}`;
