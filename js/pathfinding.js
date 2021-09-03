@@ -1,6 +1,6 @@
 var canvas;
 var ctx;
-var FPS = 50;
+var FPS = 5;
 
 //ESCENARIO / TABLERO
 var columnas = 50;
